@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Amelia O. Harrison" /><link rel="canonical" href="https://udel-cbcb.github.io/biomix-tutorial/setup_connect_to_biomix/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Setup and Connecting - Biomix Tutorial</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Setup and Connecting";
+        var mkdocs_page_input_path = "setup_connect_to_biomix.md";
+        var mkdocs_page_url = "/biomix-tutorial/setup_connect_to_biomix/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+      <script>hljs.highlightAll();</script>
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<meta property="og:site_name" content="Setup and Connecting - Biomix Tutorial" />
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="Setup and Connecting - Biomix Tutorial">
+
+<meta property="description" content="A tutorial for using the Biomix HPC cluster at UD.">
+<meta property="og:description" content="A tutorial for using the Biomix HPC cluster at UD.">
+<meta name="twitter:description" content="A tutorial for using the Biomix HPC cluster at UD.">
+
+<meta property="og:url" content="https://udel-cbcb.github.io/biomix-tutorial/setup_connect_to_biomix/">
+
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Setup and Connecting - Biomix Tutorial">
+
+  
+
+  
+
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Biomix Tutorial
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Homepage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro_to_biomix/">Biomix Background</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/aoharrison/Python-Bash-Bootcamp/tree/main/Bash_session_materials">Bash Bootcamp (external site)</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started with Biomix</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Setup and Connecting</a>
+    <ul class="current">
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_transfer_biomix/">Transferring Files</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_systems_biomix/">Biomix File Systems</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../running_jobs_on_biomix/">Running Jobs with Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../running_software_biomix/">Running Software</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Expanded Topics</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../graphical_progams_biomix/">Running Graphical Programs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Help</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../biomix_faqs/">FAQs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../troubleshooting_guide/">Troubleshooting Guide</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Biomix Tutorial</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started with Biomix</li>
+      <li class="breadcrumb-item active">Setup and Connecting</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/udel-cbcb/biomix-tutorial/edit/main/_docs_src/src/setup_connect_to_biomix.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="connecting-to-biomix">Connecting to Biomix</h1>
+<p>In this lesson, you will obtain a Biomix account and log in to Biomix for the first time.  If you did not read the <a href="../intro_to_biomix/">introductory page</a> on Biomix, now is a good time to do so.</p>
+<h1 id="setup">Setup</h1>
+<p><em>Note: If you are unfamiliar with the <a href="https://www.tenderisthebyte.com/blog/2019/12/15/beginning-bioinformatics-command-line-terminal/">command line</a>, from this point on you may have difficulty completing this tutorial.  A tutorial for using the Bash/the command line is available <a href="https://github.com/aoharrison/Python-Bash-Bootcamp/tree/main/Bash_session_materials">here</a>. Contact Amelia Harrison (aoh@udel.edu) with any questions about these materials</em></p>
+<h2 id="getting-an-account">Getting an account</h2>
+<p>Before you can use Biomix, you need an account.  To get an account, please email DBI IT at dbi-it@udel.edu.  Be sure to indicate your role (e.g., faculty, student, etc.) and what institution you are from.  If you are a student researcher, post-doc, or other member of a research lab make sure to include the name and email of your PI.   </p>
+<p>Once your account is created, you will receive an email from a DBI IT member with a link.  Whatever text that appears when you click on that link - no matter how odd - is your password.  The link will expire soon (a few days) after it's sent, so be sure to collect your password in a timely manner.  For UD users, your username will be the first part of your email, before the @udel.edu.  For users external to UD, this rule will hold true unless your email username is not in an appropriate format.  In this case, the DBI IT team will choose a username for you.</p>
+<h2 id="opening-a-terminal-and-equipping-ssh">Opening a terminal and equipping ssh</h2>
+<p>You will be interacting with Biomix via a <strong>terminal</strong>, also called a <strong>command line</strong> application, so make sure you can open one.  A terminal allows you to interact with your computer (and remote servers) using text commands, rather than visual interfaces.  Virtually every computer has a terminal, but its location and name will differ based on your operating system.  Also, some operating systems (Windows, generally speaking) come with multiple terminal options, and these may not all be conducive to connecting to Biomix.</p>
+<p>Once you have opened your terminal, you will also need to make sure that your computer is properly equipped to connect to Biomix.  Connecting to Biomix requires an <strong>ssh client</strong>, which is a program that allows you to create a secure connection to a remote server. Unfortunately, only some computers come equipped with an ssh client by default.  </p>
+<p>Please find your operating system, and in some cases version, below and follow the instructions you find there.</p>
+<h3 id="macos">MacOS</h3>
+<p>If you are on a Mac, you're in luck!  You already have an ssh client by default and a good terminal, though <a href="https://iterm2.com/">iTerm2</a> is a popular alternative to the built-in terminal.  You can find your terminal either in <code>Applications/Utilities</code>:</p>
+<p><img alt="Terminal location in Finder" src="../images/Terminal_finder_location_screenshot.png" /></p>
+<p>Or by using the Spotlight search feature:</p>
+<p><img alt="Spotlight search for terminal" src="../images/Terminal_spotlight_search_screenshot.png" /></p>
+<p>Make sure that you can open your terminal, then go ahead to the next section, "Login to Biomix."</p>
+<h3 id="linux">Linux</h3>
+<p>Linux machines generally come equipped with a terminal.  You should only have to search for "terminal" or "command line" to find it.  Here are some additional resources for the popular distributions <a href="https://www.redhat.com/sysadmin/linux-terminal-window">RedHat</a> and <a href="https://itsfoss.com/open-terminal-ubuntu/#:~:text=Method%201%3A%20Launch%20Ubuntu%20terminal%20using%20keyboard%20shortcut&amp;text=Press%20and%20hold%20Ctrl%20first,new%20terminal%20window%20is%20opened">Ubuntu</a> operating systems.</p>
+<p>Many Linux distributions come with ssh clients, but not all.  To see if you have one installed, type <code>ssh</code> into the terminal and hit enter.  If you have an ssh client, this should prompt a usage message.  If you do not have an ssh client, you should get the error message <code>command not found</code> or something similar.  If you get the error, you can install the ssh client OpenSSH by entering this command in the terminal and hitting enter:</p>
+<pre><code>sudo apt install openssh-client
+</code></pre>
+<p>To do this, you will need to be an administrator on the computer and know your password.  You will not be able to see your password as you are typing, but it is being entered.  Once you have done this, test out the <code>ssh</code> command again to ensure you don't get the error message.  Then, move on to the next section, "Login to Biomix."</p>
+<h3 id="windows">Windows</h3>
+<p>Windows users may have multiple options.  Before you jump down to read about them, first check your <a href="https://support.microsoft.com/en-us/windows/32-bit-and-64-bit-windows-frequently-asked-questions-c6ca9541-8dce-4d48-0415-94a3faa2e13d">Windows version and system type</a> so that you know which options are open to you.  We recommend reading through all of the options before choosing one.</p>
+<p><strong>Option 1:</strong> PuTTY (recommended)</p>
+<p>PuTTY is our recommended software for logging on to Biomix.  It's old-school, but easy to use and install, and is the option preferred by some of our own Bioinformatics Core scientists.  You will <em>need</em> to use PuTTY if you are running a Windows version earlier than 10.</p>
+<p>To use PuTTY, first <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">download</a> the version that matches your number of bits.  You almost certainly have a 64-bit machince, but you can make sure by <a href="https://support.microsoft.com/en-us/windows/32-bit-and-64-bit-windows-frequently-asked-questions-c6ca9541-8dce-4d48-0415-94a3faa2e13d">checking your system specs</a>.  Then, open the installer file and follow the instructions. We recommend creating a shortcut on your desktop during installation.</p>
+<p><strong>Option 2:</strong> Windows Terminal</p>
+<p>If your your machine is on Windows 10 1903 or later, you can use Windows Terminal, which comes equipped with an ssh client.  Visit <a href="https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701?hl=en-us&amp;gl=US">this link</a> to install Windows Terminal (if you are running Windows 11, your machine may have come pre-equipped with this software by default). Then, visit <a href="https://docs.microsoft.com/en-us/windows/terminal/install">this tutorial</a> to learn how to setup your terminal.  </p>
+<p>The advantage of Windows Terminal is that it requires little setup.  The disadvantage is that Windows Terminal runs a <a href="https://www.lifewire.com/list-of-command-prompt-commands-4092302">different shell language</a>* than Biomix (which runs Bash), so you will have to learn two shell languages to some extent (though this is less intimidating than it sounds) unless you also install WSL.  If you do install WSL, then Windows Terminal should automatically create a corresponding profile for you, that would use Linux.  See the next section for more information about WSL.  </p>
+<p>*There is more information about shells in the optional <a href="https://github.com/aoharrison/Python-Bash-Bootcamp/tree/main/Bash_session_materials">Bash boot camp</a> in case you are unfamiliar with the concept of shell languages. </p>
+<p><strong>Option 3:</strong> Windows Subsystem for Linux</p>
+<p>This is a good option if you are running Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11. Windows Subsystem for Linux (WSL) can be installed on your computer by following the instructions <a href="https://docs.microsoft.com/en-us/windows/wsl/install">here</a>.  Note that there is no need to change the default Linux distribution.  Once you have installed WSL, you will need to install the ssh client OpenSSH.  To do so, follow <a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui">these instructions</a></p>
+<p>The disadvantage of WSL is that it requires more setup than Windows Terminal.  The advantage of WSL is that it provides you with a Linux command line, which is the same type of command line that you will encounter on Biomix.  As mentioned above, WSL can also run in Windows Terminal if both are installed, but there is no need to install Windows Terminal in order to use WSL.</p>
+<p>Because WSL runs a Linux command line, be aware that you should use <a href="https://opensource.com/article/19/8/understanding-file-paths-linux">Linux-style file paths</a> in WSL instead of <a href="https://learn.microsoft.com/en-us/dotnet/standard/io/file-path-formats">Windows-style paths</a>.  WSL will also mimic a Linux file system with your local drives mounted (there is an example in the <a href="(https://learn.microsoft.com/en-us/windows/wsl/faq)">WSL FAQs</a>.</p>
+<p>Note: Our users have had trouble in the past launching graphical user interfaces (GUIs) on Biomix when using WSL .  If you will be doing this often, you might want to try PuTTY.</p>
+<p><strong>Option 4: Windows PowerShell</strong></p>
+<p>Finally, you can use Windows PowerShell if you are running at least Windows Server 2019 or Windows 10.  For this option, you will need to install the ssh client OpenSSH by following the instructions in <a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=gui">this guide</a>.  This is our least recommended option because you still need to install an ssh client and you will need to use a <a href="https://www.lifewire.com/list-of-command-prompt-commands-4092302">different shell</a> than is used on Biomix.  However, if you are familiar with PowerShell, this would likely be your preferred method.</p>
+<p>Once you have installed/confirmed you can open one of the four options above, go ahead to the next section, "Log in to Biomix."</p>
+<h1 id="logging-in-to-and-out-of-biomix">Logging in to and out of Biomix</h1>
+<p>If you are using PuTTY, please skip down to the next section, "Logging in with PuTTY."  Otherwise, these instructions should be the same no matter your operating system.</p>
+<p>1. Open up the terminal.  This should be the same one that where you either set up or confirmed the operation of an ssh client.</p>
+<p>2. To log on to Biomix, use the ssh command below with your username in place of <code>[username]</code>.  Then hit <code>enter</code>.  Note that <code>biomix.dbi.udel.edu</code> is the name of the server.</p>
+<pre><code class="language-bash">ssh [username]@biomix.dbi.udel.edu
+</code></pre>
+<p>3. Enter your password when prompted.  Your password will not appear as you type, but it’s there.  You will need to enter your password exactly as it appeared in the link, including capital letters and any special characters.  The backspace key works as well, in case you make a mistake. You can also copy and paste your password in.  Once done, hit <code>enter</code>. </p>
+<p><em>Note: Entering your password incorrectly multiple times in a row will result in a lock on your account.  The lock will be automatically lifted after a few hours, but you can also contact DBI IT to have it lifted.</em></p>
+<p>4. You should now be on Biomix!  A successful login will result in a few messages,
+including “Welcome to BIOMIX.”  Here is an example of a successful Biomix login:</p>
+<p><img alt="Biomix successful login example" src="../images/Biomix_successful_login.png" /></p>
+<p>5. To logout of Biomix, type <code>logout</code> and hit <code>enter</code>.</p>
+<h3 id="logging-in-with-putty">Logging in with PuTTY</h3>
+<p>If you are using PuTTY, please follow these instructions:</p>
+<p>1. Start PuTTY by double-clicking on the icon for the desktop shortcut.  If you did not create a desktop shortcut, you will have to find where you installed PuTTY.  A window like this one should appear:  </p>
+<p><img alt="PuTTY configuration box" src="../images/putty_dashboard.png" /></p>
+<p>2. In the “Host Name” box, enter <code>biomix.dbi.udel.edu</code>. Make sure the port box contains the number <code>22</code>.  Hit <code>open</code>.  A new window should appear.</p>
+<p>3. Enter your Biomix username.  Hit enter.</p>
+<p>4. A new terminal window will open and prompt you for your password.  Enter your password and hit <code>enter</code>.  Note that you will not be able to see your password as you type.  This is normal and you should enter your password as if you could see it.  The backspace key works as well, in case you make a mistake. </p>
+<p>5. You should now be on Biomix!  A successful login will result in a few messages, including “Welcome to BIOMIX.”  Here is an example of a successful Biomix login: </p>
+<p><img alt="Biomix successful login example" src="../images/Biomix_successful_login.png" /></p>
+<p>6. To logout of Biomix, type <code>logout</code> and hit <code>enter</code>.</p>
+<h1 id="helpful-links">Helpful links</h1>
+<p>Each time you log in to Biomix, there will be a welcome message, information about acknowledgment, and some useful links.  The most important link is <a href="https://bioit.dbi.udel.edu/">https://bioit.dbi.udel.edu/</a> where you will find documentation about the cluster, including news and a list of pre-installed software.</p>
+<h1 id="changing-your-password">Changing your Password</h1>
+<p>Once you have successfully logged into Biomix, you may want to change your password, though this is not required.  To do this, you will use the password command.  Simply type <code>passwd</code> and hit <code>enter</code>.  Enter your current password when prompted.  You will then be prompted to enter your new password two times.  After doing so, you will be returned to your normal command prompt and your password will have been changed.</p>
+<p><strong>Next lesson: <a href="../file_transfer_biomix/">Transferring files to and from Biomix</a></strong></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../intro_to_biomix/" class="btn btn-neutral float-left" title="Biomix Background"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../file_transfer_biomix/" class="btn btn-neutral float-right" title="Transferring Files">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/udel-cbcb/biomix-tutorial" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../intro_to_biomix/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../file_transfer_biomix/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
