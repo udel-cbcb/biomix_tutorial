@@ -1,0 +1,34 @@
+site_name: Biomix Tutorial
+site_url: https://udel-cbcb.github.io/biomix-tutorial/
+repo_url: https://github.com/udel-cbcb/biomix-tutorial
+edit_uri: edit/main/_docs_src/src
+site_description: A tutorial for using the Biomix HPC cluster at UD.
+site_author: Amelia O. Harrison
+nav:
+  - Homepage: index.md
+  - Biomix Background: intro_to_biomix.md
+  - Bash Bootcamp (external site): https://github.com/aoharrison/Python-Bash-Bootcamp/tree/main/Bash_session_materials
+  - Getting Started with Biomix:
+      - Setup and Connecting: setup_connect_to_biomix.md
+      - Transferring Files: file_transfer_biomix.md
+      - Biomix File Systems: file_systems_biomix.md
+      - Running Jobs with Slurm: running_jobs_on_biomix.md
+      - Running Software: running_software_biomix.md
+  - Expanded Topics:
+      - Running Graphical Programs: graphical_progams_biomix.md
+  - Help:
+      - FAQs: biomix_faqs.md
+      - Troubleshooting Guide: troubleshooting_guide.md
+theme:
+  name: readthedocs
+  custom_dir: custom_theme
+  # If you need code highlighting set this to true.
+  highlightjs: true
+  # Pick whichever languages you need to highlight.
+  hljs_languages:
+    - bash
+    - python
+markdown_extensions:
+  - meta
+docs_dir: src
+site_dir: ../_docs

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Amelia O. Harrison" /><link rel="canonical" href="https://udel-cbcb.github.io/biomix-tutorial/running_software_biomix/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Running Software - Biomix Tutorial</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Running Software";
+        var mkdocs_page_input_path = "running_software_biomix.md";
+        var mkdocs_page_url = "/biomix-tutorial/running_software_biomix/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+      <script>hljs.highlightAll();</script>
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<meta property="og:site_name" content="Running Software - Biomix Tutorial" />
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="Running Software - Biomix Tutorial">
+
+<meta property="description" content="A tutorial for using the Biomix HPC cluster at UD.">
+<meta property="og:description" content="A tutorial for using the Biomix HPC cluster at UD.">
+<meta name="twitter:description" content="A tutorial for using the Biomix HPC cluster at UD.">
+
+<meta property="og:url" content="https://udel-cbcb.github.io/biomix-tutorial/running_software_biomix/">
+
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Running Software - Biomix Tutorial">
+
+  
+
+  
+
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Biomix Tutorial
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Homepage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro_to_biomix/">Biomix Background</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/aoharrison/Python-Bash-Bootcamp/tree/main/Bash_session_materials">Bash Bootcamp (external site)</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started with Biomix</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../setup_connect_to_biomix/">Setup and Connecting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_transfer_biomix/">Transferring Files</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_systems_biomix/">Biomix File Systems</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../running_jobs_on_biomix/">Running Jobs with Slurm</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Running Software</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#running-software">Running software</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#path-variables">Path variables</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Expanded Topics</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../graphical_progams_biomix/">Running Graphical Programs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Help</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../biomix_faqs/">FAQs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../troubleshooting_guide/">Troubleshooting Guide</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Biomix Tutorial</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started with Biomix</li>
+      <li class="breadcrumb-item active">Running Software</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/udel-cbcb/biomix-tutorial/edit/main/_docs_src/src/running_software_biomix.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="using-software-on-biomix">Using software on Biomix</h1>
+<p><em>Note: This lesson covers running command line programs.  If you are interested in using Biomix to launch a program with a graphical user interface (GUI), such as MATLAB or RStudio, please see the instructions in the lesson <a href="../graphical_progams_biomix/">"Running graphical programs on Biomix"</a>.</em></p>
+<h2 id="running-software">Running software</h2>
+<p>Many of the most frequently used bioinformatics and computational biology programs are already installed on Biomix (complete list <a href="https://bioit.dbi.udel.edu/BIOMIX/BIOMIX-software.html">here</a>).  The instructions for enabling your account to run software are going to vary, but will be listed either on the Biomix software page or in the software's documentation.  We will be referring to the Biomix software page frequently, so make sure to have it open.</p>
+<p>Some programs will run without any preparation.  Take Clustal Omega for example.  If you are logged in to Biomix, you should be able to run the command <code>clustalo --help</code> and see the command line help documentation print to the screen.</p>
+<p>Some programs require that you add them to your <strong>path variable</strong>.  One example is RAxML, a phylogenetic tree builder.  Before you can run RAxML, you will need to run the command <code>PATH=$PATH:/usr/local/DAS_Tool</code> to include it on your path.  If you are not familiar with any of the concepts in this paragraph, please skip down to the section called "Path variables" for more information.</p>
+<p>A handful of programs, like SRA (Sequence Read Archive) Toolkit, need to be enabled using the <code>source</code> command.  To use the Toolkit, you will need to run <code>source /usr/local/ncbi/sra-tools.sh</code> each time you want to use it in a new session. While a directory will stay in your path variable unless removed, a sourced script will only remain available during the same log in session.  To demonstrate, try to run <code>sra-search</code>.  You should get a <code>command not found</code> error from bash.  Now, run <code>source /usr/local/ncbi/sra-tools.sh</code> and then run <code>sra-search</code> again.  This time, you get an error from the program itself for not including arguments and a small help section.  Next, log out of Biomix and log back in.  If you try to run <code>sra-search</code> a third time, you should get that first bash <code>command not found</code> error.</p>
+<p>Additionally, many of the software on Biomix are python-based and rely on <code>conda</code> environments.  These programs are not indicated on the website, so you will need to visit the software documentation for this information and usage instructions.  You can read more about conda <a href="https://docs.conda.io/en/latest/">here</a> and conda environments <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">here</a>.  Conda is already available on Biomix, so there is no need to install it.</p>
+<h3 id="path-variables">Path variables</h3>
+<p>Some programs require that you add them to your <strong>path variable</strong>.  The path variable stores a list of directories where <strong>executable</strong> files are located.  Executable files, or executable programs, are what actually cause a program/software to run.  In other words, they contain instructions that, when activated, tell a computer what to do and how to run a program.  You can view your path variable the same way you view any other Linux variable:</p>
+<pre><code>[aoh@biomix ~]$ echo $PATH
+/usr/local/bcftools/bin:/home/aoh/.rbenv/shims:/home/aoh/.rbenv/shims:/home/aoh/.cargo/bin:/home/aoh/miniconda3/condabin:/usr/lib64/mpich/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/aoh/.rbenv/bin:/home/aoh/bin:/usr/lib64/qt-3.3/bin:/usr/lib64/mpich2/bin:/usr/lib64/ccache:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/c3-5/:/usr/local/samtools-0.1.18:/home/aoh/software/standard-RAxML-8.2.8/:/home/aoh/scripts:/home/aoh/software/color_tree-0.7.0-alpha/:/home/aoh/.rbenv/bin:/home/aoh/.rbenv/shims:/home/aoh/.cargo/bin:/home/aoh/miniconda3/condabin:/usr/lib64/mpich/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/aoh/.rbenv/bin:/home/aoh/bin:/usr/lib64/qt-3.3/bin:/usr/lib64/mpich2/bin:/usr/lib64/ccache:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/opt/c3-5/:/usr/local/blast-2.2.22/bin/:/usr/local/samtools-0.1.18:/home/aoh/software/standard-RAxML-8.2.8/:/home/aoh/scripts:/home/aoh/software/color_tree-0.7.0-alpha/:/home/aoh/.rbenv/bin:/usr/local/AMOS/bin:/usr/local/MUMmer3.23:/usr/local/AMOS
+</code></pre>
+<p>As previously stated, this is a list of directories that each contain executable files, where individual paths are separated by colons.  So, <code>/usr/local/bcftools/bin</code> is one directory that contains an executable, and <code>/home/aoh/.rbenv/shims</code> is another.  Note that your path variable is likely to be much shorter than the one above; the example is a portion of the path variable from a long-time and frequent user of Biomix.</p>
+<p>Now that you know what a path variable <em>is</em>, you may be wondering what it's <em>for</em>.  Path variables are useful because they allow you to call programs without providing full paths.  Essentially, it's a shortcut.  Let's look at Clustal Omega as an example again.  One way to find out where an executable file is located is to simply ask it.  If you run <code>which clustalo</code>, you should get the output <code>/usr/bin/clustalo</code>.  This tells you that the executable for Clustal Omega is located in <code>/usr/bin</code>.  In fact, go ahead and list out that directory using the command <code>ls /usr/bin</code>.  You should see an executable called <code>clustalo</code> listed as one of the contents of the directory.  Now, try running <code>/usr/bin/clustalo --help</code>.  This should produce the same result you saw previously in this lesson.</p>
+<p>And this is also applies to most of the Linux and Slurm commands you have been running as well.  If you list out the contents of <code>/usr/bin</code>, you will see the executables for <code>grep</code>, <code>scancel</code>, and even <code>ls</code> listed among the many files.  In fact, you can get a little meta and run <code>/usr/bin/ls /usr/bin</code> to list the contents of the directory that contains <code>ls</code>.</p>
+<p>At this point, hopefully, you are wondering what is happening behind the scenes to make all of this work.  Each time that you try to run a command, Bash starts looking for its executable.  And where does it look?  In all of those directories in the path variable.  If it finds the executable in one of those directories, then the command gets run.  If not, bash throws a <code>command not found</code> error.  </p>
+<p>Now, that you have an idea of how this all works, let's look at a couple of commands, starting with the one for RAxML.  To put RAxML on your path, you would need to run <code>PATH=$PATH:/usr/local/DAS_Tool</code>.  This command simply re-assigns the <code>PATH</code> variable to be itself, followed by <code>:/usr/local/DAS_Tool</code>.  <strong>If you add a directory to your path this way, it will stay there until it is manually removed.</strong></p>
+<p>Another flavor of this re-assignment uses the <code>export</code> command.  You can see this in the instructions for running Xenium Ranger, part of the Xenium In Situ software suite for gene expression data.  To use Xenium Ranger, you first need to run <code>export PATH=/usr/local/xeniumranger-xenium4.0:$PATH</code>.  Running that command followed by <code>echo $PATH</code> would show a new directory at the beginning of your path variable, <code>/usr/local/xeniumranger-xenium4.0</code>.  You would now be free to run Xenium Ranger without providing the full path to the software in your command.  However, if you were to log out of Biomix and then log back in, running <code>echo $PATH</code> would show <code>/usr/local/xeniumranger-xenium4.0</code> to  have vanished from your path!  And if you try to run Xenium Ranger, you will get a pesky <code>command not found</code> error.  So, <strong>using export to add a directory to your path is temporary, and the directory will only stay in your path for that session</strong>.  </p>
+<p>TODO: any practical reasons for picking one of these two methods for software?  other than not wanting to clutter up the path?  </p>
+<p>One last important thing to note is that <strong>the order of directories on your path matters</strong>.  Let's say, for example, that you need to use a different version of a made-up program called SnazzyAnalyzer (version 2), than is already installed on Biomix (version 3) to replicate an experiment.  You install the version of the software that you need and add it to the end of your path (in this example, it does not matter if you use <code>export</code> or not).  However, when you run the command <code>snazzy -v</code> to get the version number, you get back the number of the version that was already on Biomix, not the version that you just installed.  You decide to look at your path and see this:</p>
+<pre><code>[aoh@biomix ~]$ echo $PATH
+/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/username/snazzy-3/snazzy:/home/username/snazzy-2/snazzy
+</code></pre>
+<p><strong>When bash looks through directories to find executables, it looks through them in the order that they appear on your path</strong>.  That means that when you run <code>snazzy -v</code>, bash finds the <code>snazzy</code> command from the SnazzyAnalyzer v3 before if finds the version from the SnazzyAnalyzer v2.  To remedy this, you would either need to remove version 3 from your path, or run version 2 using the whole path like this, <code>/home/username/snazzy-2/snazzy -v</code>.</p>
+<h1 id="next-steps">Next steps</h1>
+<p>This marks the end of the beginner Biomix tutorial.  You're now ready to roll for almost everything that a typical Biomix user needs to accomplish!  For other topics, including tips on installing software on Biomix, see the "Expanded Topics" section.  We have also put together some <a href="../biomix_faqs/">Frequently Asked Questions</a> and a <a href="../troubleshooting_guide/">Trouble Guide</a> to help you fulfill your Biomix dreams.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../running_jobs_on_biomix/" class="btn btn-neutral float-left" title="Running Jobs with Slurm"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../graphical_progams_biomix/" class="btn btn-neutral float-right" title="Running Graphical Programs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/udel-cbcb/biomix-tutorial" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../running_jobs_on_biomix/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../graphical_progams_biomix/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

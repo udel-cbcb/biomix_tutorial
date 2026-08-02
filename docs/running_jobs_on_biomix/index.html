@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Amelia O. Harrison" /><link rel="canonical" href="https://udel-cbcb.github.io/biomix-tutorial/running_jobs_on_biomix/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Running Jobs with Slurm - Biomix Tutorial</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Running Jobs with Slurm";
+        var mkdocs_page_input_path = "running_jobs_on_biomix.md";
+        var mkdocs_page_url = "/biomix-tutorial/running_jobs_on_biomix/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+      <script>hljs.highlightAll();</script>
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<meta property="og:site_name" content="Running Jobs with Slurm - Biomix Tutorial" />
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="Running Jobs with Slurm - Biomix Tutorial">
+
+<meta property="description" content="A tutorial for using the Biomix HPC cluster at UD.">
+<meta property="og:description" content="A tutorial for using the Biomix HPC cluster at UD.">
+<meta name="twitter:description" content="A tutorial for using the Biomix HPC cluster at UD.">
+
+<meta property="og:url" content="https://udel-cbcb.github.io/biomix-tutorial/running_jobs_on_biomix/">
+
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Running Jobs with Slurm - Biomix Tutorial">
+
+  
+
+  
+
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Biomix Tutorial
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Homepage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro_to_biomix/">Biomix Background</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/aoharrison/Python-Bash-Bootcamp/tree/main/Bash_session_materials">Bash Bootcamp (external site)</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started with Biomix</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../setup_connect_to_biomix/">Setup and Connecting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_transfer_biomix/">Transferring Files</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_systems_biomix/">Biomix File Systems</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Running Jobs with Slurm</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-slurm">What is Slurm?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running-jobs-using-slurm">Running jobs using Slurm</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#running-commands-and-scripts-interactively">Running commands and scripts interactively</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#submitting-a-batch-job-to-slurm">Submitting a batch job to Slurm</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#managing-and-monitoring-jobs-submitted-to-slurm">Managing and monitoring jobs submitted to Slurm</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#best-practices-for-requesting-cpus">Best practices for requesting CPUs</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../running_software_biomix/">Running Software</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Expanded Topics</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../graphical_progams_biomix/">Running Graphical Programs</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Help</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../biomix_faqs/">FAQs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../troubleshooting_guide/">Troubleshooting Guide</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Biomix Tutorial</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Getting Started with Biomix</li>
+      <li class="breadcrumb-item active">Running Jobs with Slurm</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/udel-cbcb/biomix-tutorial/edit/main/_docs_src/src/running_jobs_on_biomix.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="interacting-with-slurm">Interacting with Slurm</h1>
+<p><em>More documentation about <a href="https://bioit.dbi.udel.edu/BIOMIX/SLURM-intro.html">Slurm on Biomix</a></em>.</p>
+<h2 id="what-is-slurm">What is Slurm?</h2>
+<p>Recalling the <a href="../intro_to_biomix/">Biomix Background</a>, an HPC cluster is made up of several computers that have been networked together into a single system.  Each computer in a cluster is called a “node.”  When you log onto Biomix, you connect to what’s called the “head node.”  This computer’s job is to intercept incoming traffic and divvy out work to the rest of the nodes.  It does this using Slurm.</p>
+<p><a href="https://slurm.schedmd.com/overview.html">Slurm</a> is a common cluster management and job scheduling system for Linux clusters, like Biomix. It functions essentially as a traffic director for user computations, ensuring that users aren't competing for the same resource when others are available. </p>
+<p><img alt="Slurm Diagram" src="../images/slurm_diagram.png" /></p>
+<p>The head node, where you first land after logging on to Biomix, is not a good place to run jobs.  Running jobs on the head node clogs up the system for everyone, because it uses up computing power that’s supposed to be managing, rather than working.  But, if you are automatically brought to the head node upon logging in, how do you run your job somewhere else?  You guessed it, Slurm!</p>
+<p>Note that in this context, jobs are computationally expensive tasks that usually involve running software and generating files.  While there are expensive tasks you can perform that do not involve running software, you can still use "running software" as a good rule of thumb for when to jump off the head node.</p>
+<h2 id="running-jobs-using-slurm">Running jobs using Slurm</h2>
+<p>There are three ways to run jobs on Biomix:</p>
+<ol>
+<li>Run a command interactively, straight on the command line.</li>
+<li>Run a script interactively on the command line.</li>
+<li>Submit a script to Slurm.</li>
+</ol>
+<p>In all cases, you will need to do two things: request the resources (e.g., memory) you think you will need to run your job and the actual command(s) to run the job.  The first two options involve interacting directly with the command line, so you  to request resources up front, and Slurm sends you to a compute node where you can run your command or script.  When using the third option, you submit your request for resources and the job command at the same time in a single script.</p>
+<p><strong>Important note:</strong> To demonstrate job execution in Slurm, we will be using the command line version of the popular software <a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST</a>, which performs sequence homology searching.  Because the goal of this tutorial is purely to demonstrate Slurm in action, the different components of the commands will not be explained. To learn more about the BLAST commands themselves, take a look at <a href="https://open.oregonstate.education/computationalbiology/chapter/command-line-blast/">this Command Line BLAST tutorial</a>.  We will, however, cover more about running software on Biomix in general in the next lesson.</p>
+<p>To follow along with the hands-on portion of this tutorial, please do the following:</p>
+<ol>
+<li>Log in to Biomix</li>
+<li>While in your home directory, run the command <code>cp -r /work/binf-courses/biomix_tutorial/ .</code>.  Use <code>cd biomix_tutorial</code> to move into the directory you just copied over. </li>
+<li>List out the contents of the directory with <code>ls</code>. You should see 3 files: <code>demo-blastp.sh</code>, <code>demo-blastp.slurm</code>, and <code>demo-query.fasta</code>.  You will not need to create any of your own files for this tutorial.</li>
+<li>Now, continue reading through the tutorial and run any commands.  It's important that you stay within the <code>biomix_tutorial</code> directory for the commands to work.</li>
+</ol>
+<h3 id="running-commands-and-scripts-interactively">Running commands and scripts interactively</h3>
+<p>Running commands and scripts interactively is done using the <code>srun</code> command.  You should run the command if you plan to follow along.</p>
+<pre><code>srun -c 4 --mem=16000 --pty bash
+</code></pre>
+<p>The above command requests to be given access to 4 computing cores (<code>-c</code>), 16GB of memory (<code>--mem=1600</code>), and access to a Bash shell (<code>--pty bash</code>).  Note that the shell request always has to come last when using the <code>srun</code> command.  The flags shown in the command above will often be the only ones you need.  Another common flag is <code>--nodelist=biomix#</code>, which will take you to a specified Biomix node (replace <code>#</code> with the node number).  Only do this if you have a good reason to use a specific node.  The other most commonly used flag is <code>--x11</code>, which will allow you to launch graphical programs, as discussed <a href="../graphical_progams_biomix/">here</a>.  For other flags, see the <a href="https://slurm.schedmd.com/srun.html">Slurm documentation for srun</a>.</p>
+<p>It's very possible that you won't know up front exactly what resources you need.  This often involves some trial and error, especially for memory.  For each job, you will make an educated guess about how much memory you will need, and then add a bit of wiggle room on top of your initial assessment.  You will get better at this estimation over time, especially with repeated use of the same software.  You should refer to software manuals to help you out as you make any estimates.  If the documentation is good, it will have information about runtimes and memory usage.  Don't feel discouraged if you have to re-start jobs a few times; it's all part of the process.  Manuals will also have information about whether software can take advantage of parallelization.  There is more on this below in the section titled "Best practices for requesting CPUs." </p>
+<p>Once you have requested resources, you will be directed to a node that can provide you with those resources.  Once there, you can either run your job interactively, or run a script.  Running something interactively means that you are typing out your full command and executing it on the command line.  For example, see the below command that runs <a href="https://blast.ncbi.nlm.nih.gov/Blast.cgi">BLAST</a> to perform a sequence homology search.</p>
+<pre><code>blastp -query demo-query.fasta -db /dbases/blastDB/v5/nr -out output_interactive_cl.blastp.tsv -evalue 0.01 -max_target_seqs 20 -outfmt 6 -num_threads 4
+</code></pre>
+<p>If you are following along, run the above command. It takes ~30 minutes to run, so you may want to cancel it before it finishes.  To do this, press <a href="https://en.wikipedia.org/wiki/Control-C"><code>control</code> and <code>c</code></a> (<code>^C</code>) at the same time.  This will cancel the job and return you to the command prompt.</p>
+<p>The thing to know about running commands interactively (including when running scripts) is that <strong>you cannot leave entirely interactive commands unattended</strong>.  If your connection to Biomix is severed, either because you logged out or because of internet connection issues, your job will stop running and, usually, there is no chance of recovering any progress made.  For this reason, running jobs interactively this way is risky if the runtime is lengthy.</p>
+<p>You can run this same job from within a script rather than directly on the command line.  If you are following along a barebones example script (<code>demo-blastp.sh</code>) has been prepared, so there is no need to copy and paste. Running the command <code>cat demo-blastp.sh</code> will print the script's contents to your screen, which should match what is shown below.</p>
+<pre><code>#!/bin/bash
+
+blastp \
+        -query demo-query.fasta \
+        -db /dbases/blastDB/v5/nr  \
+        -out output_interactive_script.blastp.tsv \
+        -evalue 0.01 \
+        -max_target_seqs 20 \
+        -outfmt 6 \
+        -num_threads 4
+</code></pre>
+<p>This is the same command as before, but presented on multiple lines for readability.  The backslashes (<code>\</code>) are what make this possible by acting as <a href="https://tiswww.case.edu/php/chet/bash/bashref.html#Escape-Character">escape characters</a>.  In general,  the role of an escape character is to change the usual interpretation of something.  In this case, it serves to tell bash that everything from <code>blastp</code> to <code>num_threads 4</code> is a single command on a single line, even though that's not really the case.  For another example of using <code>\</code> to escape a newline, see <a href="https://superuser.com/questions/508507/linux-bash-script-single-command-but-multiple-lines">this question on StackOverflow</a>.</p>
+<p>The <code>#!/bin/bash</code> line at the top is called the shebang and it tells Slurm to source Bash.  If you're not familiar running bash scripts, please see <a href="https://github.com/aoharrison/Python-Bash-Bootcamp/blob/main/Bash_session_materials/3-Working_with_Scripts.md">this section</a> of the Bash boot camp.</p>
+<p>And here is the command to run the script:</p>
+<pre><code>bash blast_script.sh
+</code></pre>
+<p>Again, this will take ~30 minutes to run (putting it in script form does nothing to change the resource requirements or runtime), so you may want to cancel it.</p>
+<p>In addition to bash, Biomix can run scripts written in any installed programming language.  The most common languages are bash, python, and R.  For python scripts, you would use the shebang <code>#!/usr/bin/python3</code> and use <code>python3 example.py</code> to run a python script.  For R scripts, you would use the shebang <code>#!/usr/local/bin/Rscript</code> and run scripts with <code>Rscript example.R</code>.</p>
+<p><strong>To exit an interactive shell, simply run the command <code>exit</code>.</strong>  You will be taken back to the head node.</p>
+<h3 id="submitting-a-batch-job-to-slurm">Submitting a batch job to Slurm</h3>
+<p>The third option, submitting a batch job (script) directly to Slurm, is most often used for jobs that will take a long time to run.  An interactive job on Biomix will fail if your connection is severed (e.g., if your computer goes to sleep), but a submitted job does not depend on a sustained connection to Biomix and will keep running until it finishes or encounters an error.  To submit a batch job to Slurm, use the <code>sbatch</code> command with the following syntax (do not run the line of code directly below, it will not work):</p>
+<pre><code>sbatch script.slurm
+</code></pre>
+<p>Unlike with <code>srun</code>, the commands for <code>sbatch</code> actually go inside of the submitted script. Scripts to be submitted to Biomix begin like this:</p>
+<pre><code>#!/bin/bash
+#SBATCH --job-name=JobName
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=16000
+</code></pre>
+<p>Again, you can see that we start the the bash shebang (<code>#!/bin/bash</code>) because the body of the script is still written in Bash, Linux's shell language.  After the shebang are a bunch of lines that start with <code>#SBATCH</code>.  Just like the shebang line, they all start with <code>#</code> to let Slurm know that they are not part of the script and should not be executed.   Instead, each of these is a different instruction for Slurm itself. They are essentially flags that modify the <code>sbatch</code> command.  In fact, you can see that some are equivalent to the ones we used with <code>srun</code>.  We used the <code>--mem</code> flag to request memory with <code>srun</code>.  We actually also used <code>--CPUs-per-task</code> earlier as well in its shorter format (<code>-c</code>) with <code>srun</code>.  The <code>--job-name</code>, on the other hand, is new.  This flag, as you might guess, gives the job a name, which will be visible when you submit it.  Make this something informative to remind you of what is running.</p>
+<p>Here are some other useful flags that you may want to consider.</p>
+<ul>
+<li><code>#SBATCH --time=6-10</code> allows the user to change the amount of time that a job is allowed to run for without being automatically cancelled.  The default time limit is 2 days.  The example command here allows the job to run for 6 days and 10 hours.</li>
+<li><code>#SBATCH --nodelist=biomix5</code> allows you to run a job on a specific node (in this case, biomix5).</li>
+<li><code>#SBATCH --output=&lt;path to file to save STDOUT&gt;</code> directs standard out (discussed in more detail in the next section) to the specified directory.  By default, standard out is sent to the directory you are in when you submit the job.</li>
+<li><code>#SBATCH --error=&lt;path to file to save STDERR&gt;</code> does the same as above, but for standard error.</li>
+<li><code>#SBATCH --mail-user=&lt;email@here&gt;</code> sends email alerts about your submitted Slurm job.  More on this in the next section.</li>
+</ul>
+<p>Here is a version of the script from the previous section that is ready to be submitted to Slurm using <code>sbatch</code>.  In the <code>biomix_tutorial</code> directory, the Slurm script is named <code>demo-blastp.slurm</code> and you can use the <code>cat</code> command to print its contents to your screen as well.  Notice that even though the body of the above script is the same as the body of the BLAST script in the previous section and the shebangs are the same, this script ends in <code>.slurm</code> rather than <code>.sh</code>.  This is to reflect that this script contains those <code>#SBATCH</code> commands meant for Slurm.</p>
+<pre><code>#!/bin/bash
+#SBATCH --job-name=BLASTp
+#SBATCH --mem=32000
+#SBATCH --cpus-per-task=4
+
+
+blastp \
+    -query demo-query.fasta \
+    -db /dbases/blastDB/v5/nr  \
+    -out output_batch.blastp.tsv \
+    -evalue 0.01 \
+    -max_target_seqs 20 \
+    -outfmt 6 \
+    -num_threads 4
+</code></pre>
+<p>To submit the script to Slurm, run the below command:</p>
+<pre><code>sbatch demo-blastp.slurm
+</code></pre>
+<p>This should result in a small output similar to the following, but with a different job number: <code>Submitted batch job 228171</code>.  You will notice that unlike with the interactive job, you are still free to use the terminal as the job is running.  One more quick note on Slurm scripts before we talk about where your jobe "went."</p>
+<p>While you can simply add <code>#SBATCH</code> commands to a Bash script and submit it to Slurm, the same thing will not work for other languages.  That's because Bash is a shell language; it's meant for working at the command line and is the "default" language for Biomix.  Most of the time, any other langauges you would want to use, like python or R, are scripting languages, which Biomix does not inherently understand.  Because of this, you cannot add <code>#SBATCH</code> commands to a non-Bash script and expect it to run. Instead, you will need to include the command for running the non-Bash script inside a Slurm script.  This sounds confusing, but is very simple.  Below is an example of a Slurm script that runs an R script:</p>
+<pre><code>#!/bin/bash
+#SBATCH --job-name=R-plot
+#SBATCH --mem=8000
+#SBATCH --cpus-per-task=1
+
+Rscript script.R
+</code></pre>
+<h4 id="managing-and-monitoring-jobs-submitted-to-slurm">Managing and monitoring jobs submitted to Slurm</h4>
+<p>Every time you submit a job to Slurm, the first thing you should do is check to see that it is running and did not immediately fail.  The <code>squeue</code> command will show you all of the jobs currently running on Biomix.  Look for your username and job name to find yours.  If you do not see your job after a couple of <code>squeue</code> attempts, it most likely failed.  <strong>A job submitted to Slurm will run until 1) the job finishes, 2) the program encounters an error and the job fails, 3) the user (or admin) terminates the job, 4) the job exceeds the requested memory resources, or 5) the job exceeds the set time limit.</strong>  </p>
+<p>If your job is still running, you will see in the queue that it has an ID number.  Every job submitted to Biomix is given a unique number to identify it.  Note that these numbers are not tied to a specific script; if you run the same script twice, each submission will be given a different number.  You can use this number to monitor only your job with the command <code>squeue --job #####</code> (you would replace <code>#####</code> with your actual jobid).  If you want to monitor multiple jobs at once, or you don't want to go back and find your jobid, you can ask Slurm to show you any jobs under your username with <code>squeue -u your_username</code>.</p>
+<p>If you don't want to keep checking the status of your job, you can ask Slurm to email you by adding the following to your script:</p>
+<pre><code>#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-user=&lt;email@here&gt;
+</code></pre>
+<p>The first line will email you when your job ends, either because it has finished or it has failed.  The second line tells Slurm where to send the email.</p>
+<p>Whether your job succeeds or fails, <strong>anything that the program you are running writes to standard out (stdout) will appear in a <code>slurm.out</code> file</strong> (standard out is covered in the <a href="https://github.com/aoharrison/Python-Bash-Bootcamp/tree/main/Bash_session_materials">Bash boot camp</a>).  This includes any errors encountered, so you need to check this file if your job fails so you can get information on how to fix it.  This is different from running an interactive job where content for stdout is printed directly to the screen.  These out files take the form of <code>slurm-#####.out</code>, where <code>####</code> is the ID of a submitted job.  Unless directed to a different location, it will be written to your working directory when you submitted the script.  For help with errors, please see the <a href="../troubleshooting_guide/">troubleshooting guide</a> and the <a href="../biomix_faqs/">FAQs</a>.</p>
+<p>The job ID also comes in handy if you ever need to cancel a job.  For this, just use <code>scancel #####</code>.</p>
+<h3 id="best-practices-for-requesting-cpus">Best practices for requesting CPUs</h3>
+<p>When it comes to requesting CPUs from Slurm, there is a lot of different, but closely related, vocabulary floating around that can confuse users, namely CPUs, cores, and threads.  There is a really good article about the differences <a href="https://www.liquidweb.com/blog/difference-cpu-cores-thread/">here</a>.  If you don't want to read the full article, here is a summary of the most important parts:</p>
+<p>A <em>CPU</em> (central processing unit) is essentially the brain of a computer.  It may have one or more physical processing units called <em>cores</em>.  While CPUs and cores are physical objects (hardware), <em>threads</em> are series of digital instructions (software) given to a CPU about how to utilize resources for a program or applciation.  Tis is why, in general, software manuals will refer to "threads", while computers themselves will be concerned with "CPUs" and "cores." </p>
+<p>There are two flags that can be used to request CPUs from Slurm, but you should only use one of them: please use the <code>-c</code>/<code>--CPUs-per-task</code> flag instead of <code>--ntasks</code> to request CPUs/cores.  This is the method we used in the above examples.  Most of the time, their functions are the same, but <code>--ntasks</code> can have unpredictable behavior in certain cases.</p>
+<p>Also, please keep in mind that <strong>requesting a certain number of CPUs from Slurm doesn't automatically mean that they will be used</strong>.  The number of threads/CPUs also needs to be specified for the software you running (as we did in the BLAST command).  The number requested from Slurm and specified for the software should be the same.  This goes for both interactive and submitted jobs.  </p>
+<p>Additionally, all of this will only be possible if software is multithreaded.  <a href="https://en.wikipedia.org/wiki/Multithreading_(computer_architecture)"><strong>Multithreading</strong></a> allows for multiple processes to be run at once, speeding up the execution time of a program.  There are a few processes in bioinformatics that have such long runtimes and take up so many computing resources that running them without enabling multiple threads is impractical (e.g., metagenome assembly).  </p>
+<p>You will need to check software manuals for instructions on how to use multiple threads, and if that option exists for that software.  For example, here is <a href="https://www.ncbi.nlm.nih.gov/books/NBK571452/">BLAST's page about multithreading</a>.</p>
+<p><strong>Next lesson: <a href="../running_software_biomix/">Running software on Biomix</a></strong></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../file_systems_biomix/" class="btn btn-neutral float-left" title="Biomix File Systems"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../running_software_biomix/" class="btn btn-neutral float-right" title="Running Software">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/udel-cbcb/biomix-tutorial" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../file_systems_biomix/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../running_software_biomix/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

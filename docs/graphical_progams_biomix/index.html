@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Amelia O. Harrison" /><link rel="canonical" href="https://udel-cbcb.github.io/biomix-tutorial/graphical_progams_biomix/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Running Graphical Programs - Biomix Tutorial</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Running Graphical Programs";
+        var mkdocs_page_input_path = "graphical_progams_biomix.md";
+        var mkdocs_page_url = "/biomix-tutorial/graphical_progams_biomix/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/python.min.js"></script>
+      <script>hljs.highlightAll();</script>
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+<meta property="og:site_name" content="Running Graphical Programs - Biomix Tutorial" />
+
+<meta property="og:type" content="website">
+
+<meta property="og:title" content="Running Graphical Programs - Biomix Tutorial">
+
+<meta property="description" content="A tutorial for using the Biomix HPC cluster at UD.">
+<meta property="og:description" content="A tutorial for using the Biomix HPC cluster at UD.">
+<meta name="twitter:description" content="A tutorial for using the Biomix HPC cluster at UD.">
+
+<meta property="og:url" content="https://udel-cbcb.github.io/biomix-tutorial/graphical_progams_biomix/">
+
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Running Graphical Programs - Biomix Tutorial">
+
+  
+
+  
+
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Biomix Tutorial
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Homepage</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../intro_to_biomix/">Biomix Background</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="" href="https://github.com/aoharrison/Python-Bash-Bootcamp/tree/main/Bash_session_materials">Bash Bootcamp (external site)</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Getting Started with Biomix</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../setup_connect_to_biomix/">Setup and Connecting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_transfer_biomix/">Transferring Files</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../file_systems_biomix/">Biomix File Systems</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../running_jobs_on_biomix/">Running Jobs with Slurm</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../running_software_biomix/">Running Software</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Expanded Topics</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Running Graphical Programs</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#launching-a-program">Launching a program</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Help</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../biomix_faqs/">FAQs</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../troubleshooting_guide/">Troubleshooting Guide</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Biomix Tutorial</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Expanded Topics</li>
+      <li class="breadcrumb-item active">Running Graphical Programs</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/udel-cbcb/biomix-tutorial/edit/main/_docs_src/src/graphical_progams_biomix.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="running-graphical-programs-from-biomix">Running graphical programs from Biomix</h1>
+<p>In addition to command line programs, you can also use Biomix for programs with a Graphical User Interface (GUI), like FastQC or MATLAB.  For this, you may need to do a bit of configuration on your own computer.  As always, please <strong>be careful about what you are running on the head node</strong>.  Graphical applications, especially computing GUIs like MATLAB, can be computationally expensive and launching them from the head node may slow down Biomix and interrupt others' work.</p>
+<h2 id="setup">Setup</h2>
+<p>Even though you will be using Biomix to run the software, your own computer will need a windowing system to display the graphical aspect of the program.  Specifically, you will need to use a method called X11 forwarding, which is an <code>ssh</code> feature that allows you to run graphical programs from a remote server using your local machine's X server</p>
+<p>To do this, your PC will need to be equipped with a windowing system.  We recommend <a href="https://www.xquartz.org/">XQuartz</a> for MacOS and <a href="https://sourceforge.net/projects/xming/">Xming</a> for Windows.  Most Linux distributions come with X11 forwarding by default.</p>
+<p>Follow the link for your operating system above, download the latest version of the software, then follow your system instructions to install.  Then, it is highly recommended that you restart your cmputer so that the changes implemented by the software can take effect.</p>
+<h2 id="launching-a-program">Launching a program</h2>
+<p>For this example, we are going to launch xeyes, a fun little program that pops up a set of eyes that watch your mouse move around the screen.  Because there is a graphical component (the eye animation), it's a great way to test if your window forwarding is working.</p>
+<p><em>A quick note, we have noticed that WSL can be difficult to configure for X11 forwarding.  If you are using WSL to connect to Biomix and run into issues, we recommend switching to PuTTY for this purpose.</em></p>
+<p>1. First, log in to Biomix with X11 forwarding enabled:</p>
+<ul>
+<li>
+<p>PuTTY users: Open PuTTY.  In the menu on the left-hand side, expand the <code>ssh</code> settings by hitting the <code>+</code> button next to "SSH."  Then, click on "X11."  In the menu that appears, make sure that the box labeled "Enable X11 forwarding" is checked.  Then, log in to Biomix as usual.</p>
+</li>
+<li>
+<p>Everyone else: Open a terminal window on your local machine and connect to the remote Linux server using <code>ssh</code> with X11 forwarding enabled by running the following command:</p>
+<pre><code>```{bash}
+ssh -X username@biomix.dbi.udel.edu
+```
+</code></pre>
+</li>
+</ul>
+<p>If you encounter an error using this command, try using the <code>-Y</code> instead of <code>-X</code>.  <code>-Y</code> enables trusted X11 forwarding, which is safe to use here because Biomix is a trsuted server</p>
+<p>2. Once you are connected to Biomix, submit an interactive Slurm job to allocate resources for running RStudio. To do this, run the following command:</p>
+<pre><code>srun --x11 --mem=2000  --pty bash 
+</code></pre>
+<p>This will allocate 2GB of memory and for your interactive Slurm job, and launch a Bash shell in your job.  Depending on what program you are launching and what you are doing, you may need more or less time or memory. </p>
+<p>The <code>--x11</code> option enables X11 forwarding within the job, which is what will launch the GUI.</p>
+<p>3. Once your interactive Slurm job has started, you should see a new prompt in your terminal window. From this prompt, launch xeyes by running the following command:</p>
+<pre><code>xeyes
+</code></pre>
+<p>A pair of googly eyes should now appear on your local screen, displayed through X11 forwarding.  They should follow your mouse as you move it around the screen.</p>
+<p>4. When you are done using your graphical program, close the window.  If this does not stop the process running on Biomix, use <code>^C</code> to terminate it.  Don't forget to exit the interactive job and logout of Biomix, if you are finished.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../running_software_biomix/" class="btn btn-neutral float-left" title="Running Software"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../biomix_faqs/" class="btn btn-neutral float-right" title="FAQs">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/udel-cbcb/biomix-tutorial" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../running_software_biomix/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../biomix_faqs/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
