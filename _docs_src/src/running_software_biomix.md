@@ -1,18 +1,35 @@
 # Using software on Biomix
 
-*Note: This lesson covers running command line programs.  If you are interested in using Biomix to launch a program with a graphical user interface (GUI), such as MATLAB or RStudio, please see the instructions in the lesson ["Running graphical programs on Biomix"](graphical_progams_biomix.md).*
+*Note: This lesson covers running command line programs.  If you are interested in using Biomix to launch a program with a graphical user interface (GUI), such as MATLAB or FastQC, please see the instructions in the lesson ["Running graphical programs on Biomix"](graphical_progams_biomix.md).*
 
 ## Running software
 
-Many of the most frequently used bioinformatics and computational biology programs are already installed on Biomix (complete list [here](https://bioit.dbi.udel.edu/BIOMIX/BIOMIX-software.html)).  The instructions for enabling your account to run software are going to vary, but will be listed either on the Biomix software page or in the software's documentation.  We will be referring to the Biomix software page frequently, so make sure to have it open.
+Executing software on an HPC node follows the standard CLI pattern:
 
-Some programs will run without any preparation.  Take Clustal Omega for example.  If you are logged in to Biomix, you should be able to run the command `clustalo --help` and see the command line help documentation print to the screen.
+```bash
+command -flags argument1 argument2
+```
 
-Some programs require that you add them to your **path variable**.  One example is RAxML, a phylogenetic tree builder.  Before you can run RAxML, you will need to run the command `PATH=$PATH:/usr/local/DAS_Tool` to include it on your path.  If you are not familiar with any of the concepts in this paragraph, please skip down to the section called "Path variables" for more information.
+First comes the executable command (which may require loading a module first), followed by flags (- or --) that set options like thread count or output paths, and finally any input arguments (such as file names).  For example, the following command runs FastQC, a tool that evaluates sequence read quality, with 4 threads on an input file
 
-A handful of programs, like SRA (Sequence Read Archive) Toolkit, need to be enabled using the `source` command.  To use the Toolkit, you will need to run `source /usr/local/ncbi/sra-tools.sh` each time you want to use it in a new session. While a directory will stay in your path variable unless removed, a sourced script will only remain available during the same log in session.  To demonstrate, try to run `sra-search`.  You should get a `command not found` error from bash.  Now, run `source /usr/local/ncbi/sra-tools.sh` and then run `sra-search` again.  This time, you get an error from the program itself for not including arguments and a small help section.  Next, log out of Biomix and log back in.  If you try to run `sra-search` a third time, you should get that first bash `command not found` error.
+```bash
+fastqc -t 4 sample1.fastq
+# │      │ │  └── Argument (Input file)
+# │      └───┴──── Flag & Value (Sets threads to 4)
+# └─────────────── Command (The program)
+```
 
-Additionally, many of the software on Biomix are python-based and rely on `conda` environments.  These programs are not indicated on the website, so you will need to visit the software documentation for this information and usage instructions.  You can read more about conda [here](https://docs.conda.io/en/latest/) and conda environments [here](https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html).  Conda is already available on Biomix, so there is no need to install it.
+Many of the most frequently used bioinformatics and computational biology programs are already installed on Biomix (complete list [here](https://bioit.dbi.udel.edu/BIOMIX/BIOMIX-software.html)).  In addition to providing any instructions for running the software on the cluster, there are also links to each tool's documentation, which will contain details on available commands and options.
+
+Some programs will run on Biomix without any preparation.  Take MAFFT, a multiple sequencer alignment tool, for example.  The Biomix software page does not list any instructions, so you should be able to run it without any setup.  Visiting the tool's [documentation](https://mafft.cbrc.jp/alignment/software/) shows that the command to run the program is simply `mafft`.  So, if you are logged in to Biomix, you should be able to run the command `mafft --help` and see the command line help documentation print to the screen.  
+
+Some programs require that you add them to your **path variable**.  There is a comprehensive section on what this means below that you should visit if you're not familiar with this concept.  One example is DAS_Tool, a software tool for binning contigs from a metagenome assembly.  Before you can run DAS_Tool, you will need to run the command `PATH=$PATH:/usr/local/DAS_Tool` to include it on your path.  
+
+A handful of programs use pre-made [conda](https://docs.conda.io/en/latest/) environments.  Conda is a package and environment management system. In this context, think of Conda as a tool that builds isolated software "bubbles" (called environments). Because some software can have trouble playing nicely with the rest of the system, Conda provides a way to run those programs in their own custom environment without affecting other tools.  
+
+To use these pre-built environments, you will need to first use the `source` command to make sure your current session is using the installation of Conda that has the environments installed.  This is necessary in case you have your own version(s) of conda installed.  Note that `source` commands are only active for a single session and need to be re-run each time you log in to Biomix if you intend to use the software.
+
+Let's use GTDB-Tk, software toolkit for assigning taxonomic classifications based on the Genome Database Taxonomy GTDB, for this example.  The [documentation](https://ecogenomics.github.io/GTDBTk/) for this software will tell you to run `gtdbtk -h` to access the command line help documentation.  Running this on Biomix with no preparation will result in an error: `gtdbtk: command not found`.  Looking at the Biomix software page, there are two commands you will need to run to access the shared Conda environment.  First, the source command `source /opt/miniforge3/etc/profile.d/conda.sh` will ensure that you are using the correct instance of Conda.  Second, you will need to activate the shared conda environment using: `conda activate /opt/conda-envs/gtdbtk-2.7.2`.  After running those two commands, `gtdbtk -h` should now result in the help documentation.  To leave the environment, simply run `conda deactivate` to deactivate the environment.  The system will return to not recognizing the `gtdbtk` command.
 
 ### Path variables
 
@@ -25,7 +42,7 @@ Some programs require that you add them to your **path variable**.  The path var
 
 As previously stated, this is a list of directories that each contain executable files, where individual paths are separated by colons.  So, `/usr/local/bcftools/bin` is one directory that contains an executable, and `/home/aoh/.rbenv/shims` is another.  Note that your path variable is likely to be much shorter than the one above; the example is a portion of the path variable from a long-time and frequent user of Biomix.
 
-Now that you know what a path variable *is*, you may be wondering what it's *for*.  Path variables are useful because they allow you to call programs without providing full paths.  Essentially, it's a shortcut.  Let's look at Clustal Omega as an example again.  One way to find out where an executable file is located is to simply ask it.  If you run `which clustalo`, you should get the output `/usr/bin/clustalo`.  This tells you that the executable for Clustal Omega is located in `/usr/bin`.  In fact, go ahead and list out that directory using the command `ls /usr/bin`.  You should see an executable called `clustalo` listed as one of the contents of the directory.  Now, try running `/usr/bin/clustalo --help`.  This should produce the same result you saw previously in this lesson.
+Now that you know what a path variable *is*, you may be wondering what it's *for*.  Path variables are useful because they allow you to call programs without providing full paths.  Essentially, it's a shortcut.  Let's look at Clustal Omega again as an example again.  One way to find out where an executable file is located is to simply ask it.  If you run `which clustalo`, you should get the output `/usr/bin/clustalo`.  This tells you that the executable for Clustal Omega is located in `/usr/bin`.  In fact, go ahead and list out that directory using the command `ls /usr/bin`.  You should see an executable called `clustalo` listed as one of the contents of the directory.  Now, try running `/usr/bin/clustalo --help`.  This should produce the same result you saw previously in this lesson.
 
 And this is also applies to most of the Linux and Slurm commands you have been running as well.  If you list out the contents of `/usr/bin`, you will see the executables for `grep`, `scancel`, and even `ls` listed among the many files.  In fact, you can get a little meta and run `/usr/bin/ls /usr/bin` to list the contents of the directory that contains `ls`.
 
@@ -34,8 +51,6 @@ At this point, hopefully, you are wondering what is happening behind the scenes 
 Now, that you have an idea of how this all works, let's look at a couple of commands, starting with the one for RAxML.  To put RAxML on your path, you would need to run `PATH=$PATH:/usr/local/DAS_Tool`.  This command simply re-assigns the `PATH` variable to be itself, followed by `:/usr/local/DAS_Tool`.  **If you add a directory to your path this way, it will stay there until it is manually removed.**
 
 Another flavor of this re-assignment uses the `export` command.  You can see this in the instructions for running Xenium Ranger, part of the Xenium In Situ software suite for gene expression data.  To use Xenium Ranger, you first need to run `export PATH=/usr/local/xeniumranger-xenium4.0:$PATH`.  Running that command followed by `echo $PATH` would show a new directory at the beginning of your path variable, `/usr/local/xeniumranger-xenium4.0`.  You would now be free to run Xenium Ranger without providing the full path to the software in your command.  However, if you were to log out of Biomix and then log back in, running `echo $PATH` would show `/usr/local/xeniumranger-xenium4.0` to  have vanished from your path!  And if you try to run Xenium Ranger, you will get a pesky `command not found` error.  So, **using export to add a directory to your path is temporary, and the directory will only stay in your path for that session**.  
-
-TODO: any practical reasons for picking one of these two methods for software?  other than not wanting to clutter up the path?  
 
 One last important thing to note is that **the order of directories on your path matters**.  Let's say, for example, that you need to use a different version of a made-up program called SnazzyAnalyzer (version 2), than is already installed on Biomix (version 3) to replicate an experiment.  You install the version of the software that you need and add it to the end of your path (in this example, it does not matter if you use `export` or not).  However, when you run the command `snazzy -v` to get the version number, you get back the number of the version that was already on Biomix, not the version that you just installed.  You decide to look at your path and see this:
 
