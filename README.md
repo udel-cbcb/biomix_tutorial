@@ -6,6 +6,6 @@ Please see our [acknowledgement statement](https://bioinformatics.udel.edu/core/
 
 ## License
 
-(c) 2026 by Amelia O. Harrison and Shawn W. Polson.
+(c) 2026 by Amelia O. Harrison, Madolyn MacDonald, and Shawn W. Polson.
 
-The BioStore documentation is licensed under the MIT License.
+The Biomix Tutorial is licensed under the MIT License.
