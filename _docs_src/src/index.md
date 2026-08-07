@@ -27,8 +27,7 @@ Biomix allows Delaware life science researchers to perform analyses that may be 
 
 4. Expanded Topics
 	* [Running graphical programs from Biomix](graphical_progams_biomix.md)
-	* Using RStudio on Biomix
-	* Installing software
+	* [Running RStudio on Biomix](rstudio_via_singularity_container.md)
 	
 5. Help
 	* [FAQs](biomix_faqs.md)

@@ -16,6 +16,7 @@ nav:
       - Running Software: running_software_biomix.md
   - Expanded Topics:
       - Running Graphical Programs: graphical_progams_biomix.md
+      - Running RStudio: rstudio_via_singularity_container.md
   - Help:
       - FAQs: biomix_faqs.md
       - Troubleshooting Guide: troubleshooting_guide.md
